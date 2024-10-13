@@ -2,7 +2,13 @@
 name = "fast_websocket_client"
 version = "0.2.0"
 edition = "2021"
-categories = ["asynchronous", "concurrency", "network-programming", "web-programming", "web-programming::websocket"]
+categories = [
+    "asynchronous",
+    "concurrency",
+    "network-programming",
+    "web-programming",
+    "web-programming::websocket",
+]
 keywords = ["async", "client", "tokio", "websocket", "wss"]
 license = "Apache-2.0"
 authors = ["Hyoungjun Son"]
@@ -16,27 +22,36 @@ name = "wss_client"
 path = "examples/wss_client.rs"
 
 [dependencies]
-fastwebsockets = { version = "0.6", features = ["simd", "upgrade"] }
-http-body-util = "0"
-hyper = "1"
-hyper-util = "0"
-rustls-pki-types = "1"
-serde = "1"
-serde_json = "1"
-simdutf8 = { version = "0", features = ["aarch64_neon"] }
-tokio = { version = "1", default-features = false, features = ["net", "parking_lot", "rt"] }
-tokio-rustls = "0.25"
-url = "2"
-utf-8 = "0"
-webpki-roots = "0"
+fastwebsockets = { version = "0.8", features = ["simd", "upgrade"] }
+http-body-util = "0.1.2"
+hyper = "1.4.1"
+hyper-util = "0.1.9"
+rustls-pki-types = "1.9.0"
+serde = "1.0.210"
+serde_json = "1.0.128"
+simdutf8 = { version = "0.1.5", features = ["aarch64_neon"] }
+tokio = { version = "1.40.0", default-features = false, features = [
+    "net",
+    "parking_lot",
+    "rt",
+] }
+tokio-rustls = "0.26"
+url = "2.5.2"
+utf-8 = "0.7.6"
+webpki-roots = "0.26.6"
 
 [features]
 default = ["simd"]
 simd = []
 
 [dev-dependencies]
-serde = { version = "1", features = ["derive"] }
-tokio = { version = "1", default-features = false, features = ["macros",  "parking_lot", "rt-multi-thread", "time"] }
+serde = { version = "1.0.210", features = ["derive"] }
+tokio = { version = "1.40.0", default-features = false, features = [
+    "macros",
+    "parking_lot",
+    "rt-multi-thread",
+    "time",
+] }
 
 [profile.release]
 opt-level = 3
